@@ -19,7 +19,7 @@ $result2 = $db->query("SELECT * FROM `locations`");
         }
 
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA43zMht60OalNkHOEp-nOy55SjuwWMD3c"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
 
 
     <script>
