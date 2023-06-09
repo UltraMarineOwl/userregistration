@@ -1,0 +1,8 @@
+body{
+    background: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)),url(image.jpg);
+    background-size:cover ;
+    background-position: center;
+}
+
+<div id="map"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA43zMht60OalNkHOEp-nOy55SjuwWMD3c&callback=loadMap&v=weekly"></script>

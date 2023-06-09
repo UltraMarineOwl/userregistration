@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Eg. Google Maps Marker using External JSON</title>
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #map{
+            width: 100%;
+            height: 80%;
+            border: 1px solid #04AA6D;
+        }
+
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyA43zMht60OalNkHOEp-nOy55SjuwWMD3c&callback=initMap&v=weekly">
+        var json = [
+            {
+                "title": "Stockholm",
+                "lat": 59.3,
+                "lng": 18.1,
+                "description": "Stockholm is the capital and the largest city of Sweden and constitutes the most populated urban area in Scandinavia with a population of 2.1 million in the metropolitan area (2010)"
+            },
+            {
+                "title": "Oslo",
+                "lat": 59.9,
+                "lng": 10.8,
+                "description": "Oslo is a municipality, and the capital and most populous city of Norway with a metropolitan population of 1,442,318 (as of 2010)."
+            },
+            {
+                "title": "Copenhagen",
+                "lat": 55.7,
+                "lng": 12.6,
+                "description": "Copenhagen is the capital of Denmark and its most populous city, with a metropolitan population of 1,931,467 (as of 1 January 2012)."
+            }
+        ]
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById("map"), {
+                center: new google.maps.LatLng(57.9, 14.6),
+                zoom: 6,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            for (var i = 0, length = json.length; i < length; i++) {
+                var data = json[i],
+                    latLng = new google.maps.LatLng(data.lat, data.lng);
+
+                // Creating a marker and putting it on the map
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    title: data.title
+                });
+            }
+            var infoWindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(marker, "click", function(e) {
+                infoWindow.setContent(data.description);
+                infoWindow.open(map, marker);
+            });
+        }
+    </script>
+
+</head>
+<div id="map">
+
+</div>
+</body>
+</html>
